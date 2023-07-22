@@ -1,0 +1,32 @@
+Host seba_nas
+  HostName 192.168.0.62
+  Port 22
+  User seba_nas
+  IdentityFile ~/.ssh/seba_nas
+  Compression no
+  Ciphers aes128-ctr
+  StrictHostKeyChecking=no
+  ForwardAgent no
+
+Host rpi
+  HostName 192.168.0.60
+  Port 69
+  User seba
+  IdentityFile ~/.ssh/rpi
+  Compression no
+  Ciphers aes128-ctr
+  StrictHostKeyChecking=no
+  ForwardAgent no
+
+Host office_pc
+  HostName 192.168.224.188
+  User sebastianwa
+  IdentityFile ~/.ssh/office_host_pc
+  Compression no
+  Ciphers aes128-ctr
+  StrictHostKeyChecking=no
+  ForwardAgent no
+
+Host *
+  ForwardX11 yes
+  ForwardX11Trusted yes
