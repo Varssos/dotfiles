@@ -1,0 +1,14 @@
+[user]
+	email = sebastianwach22@gmail.com
+[credential]
+	helper = store
+[gitreview]
+	remote = origin
+[color]
+	ui = auto
+[core]
+	editor = vi
+
+[alias]
+    s = status
+    lg = log --oneline --decorate --all --graph
