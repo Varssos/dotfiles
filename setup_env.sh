@@ -30,3 +30,14 @@ else
     echo "Creating symbolic link for ~/.ssh/config"
     ln -s $PWD/ssh/config ~/.ssh/config
 fi
+
+# Setup keybinding
+sudo apt update
+sudo apt-get install xbindkeys -y
+
+if [ -f ~/.xbindkeysrc ]; then
+    echo "File ~/.xbindkeysrc exist. Script will create a symbolic link only if it doesn't exist."
+else
+    echo "Creating symbolic link for ~/.xbindkeysrc"
+    ln -s $PWD/keybinding/.xbindkeysrc ~/.xbindkeysrc
+fi
