@@ -20,8 +20,8 @@ alias cd8='cd ../../../../../../../..'
 alias mountofficedisk='sudo sshfs -o allow_other,IdentityFile=/home/sw/.ssh/office_host_pc sebastianwa@192.168.224.188:/home/sebastianwa/ /mnt/office_pc_home/'
 alias umountofficedisk='sudo umount /mnt/office_pc_home'
 alias mkcd='function mkcdf(){ mkdir "$1"; cd "$1"; }; mkcdf'
-
 alias duhere='du --all -h -d 1 | sort -h'
+alias copy_last_command='history -p '!!' | xclip -sel clip'
 
 
 # Useful scripts

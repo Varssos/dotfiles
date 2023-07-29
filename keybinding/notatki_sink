@@ -1,0 +1,56 @@
+
+# Listowanie sinków
+pactl list short sinks
+#
+sw@sw:~/Documents/my_files/dotfiles_tmp$ pactl list short sinks
+0	alsa_output.pci-0000_01_00.1.hdmi-stereo	module-alsa-card.c	s16le 2ch 44100Hz	SUSPENDED
+1	alsa_output.pci-0000_06_00.6.analog-stereo	module-alsa-card.c	s16le 2ch 44100Hz	SUSPENDED
+
+
+pactl set-default-sink 0
+pactl set-default-sink 1
+
+pactl get-default-sink
+pactl list short sinks
+
+
+# dzwiek
+espeak "hello"
+
+
+## pacmd
+
+pacmd list-sink-inputs | grep sink
+
+
+
+
+pactl move-sink-input 0 alsa_output.pci-0000_01_00.1.hdmi-stereo
+
+
+# Wynik
+1. Trzeba zmienić defult sink
+
+
+2. pactl move-sink-input 1 alsa_output.pci-0000_01_00.1.hdmi-stereo
+
+gdzie 1 to index z:
+pacmd list-sink-inputs
+
+
+
+/home/sw/Documents/my_files/dotfiles_tmp/keybinding/switch_audio_output.sh
+
+    m:0x10 + c:63
+    Mod2 + KP_Multiply
+
+    m:0x10 + c:106
+    Mod2 + KP_Divide
+
+
+
+sudo apt-get install xbindkeys
+
+put .xbindkeysrc to ~/
+
+xbindkeys -p
