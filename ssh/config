@@ -30,3 +30,4 @@ Host office_pc
 Host *
   ForwardX11 yes
   ForwardX11Trusted yes
+  IdentitiesOnly=yes
