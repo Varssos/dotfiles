@@ -51,6 +51,8 @@ alias getphysicalttyusbaddress='getphysicalttyUSBaddress_fun() { udevadm info --
 
 # Graphic things
 alias check_graphic_session_type='echo $XDG_SESSION_TYPE'
+alias nomachine_restart_nxserver='sudo systemctl stop gdm && sudo /etc/NX/nxserver --restart'
+alias start_gnome_display_manager='sudo systemctl start gdm'
 
 # Network
 alias tailscale_turnon='sudo tailscale up'
