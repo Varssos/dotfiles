@@ -16,3 +16,14 @@ Or create symbolic link
 ```
 ln -s $PWD/.xbindkeysrc ~/.xbindkeysrc
 ```
+
+## Restart xbindkeys
+```
+killall xbindkeys
+xbindkeys
+```
+
+Reload config
+```
+xbindkeys -p
+```

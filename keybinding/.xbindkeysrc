@@ -14,8 +14,8 @@
   m:0x10 + c:106
   Mod2 + KP_Divide
 
-"xdotool key F3"
+"xdotool key F4"
   b:8
 
-"xdotool key F1"
+"xdotool key F3"
   b:9

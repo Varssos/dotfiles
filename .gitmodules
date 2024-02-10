@@ -1,3 +1,6 @@
 [submodule "bashrc"]
 	path = bashrc
 	url = https://github.com/Varssos/bashrc.git
+[submodule "tmux_config"]
+	path = tmux_config
+	url = https://github.com/Varssos/tmux_config.git
