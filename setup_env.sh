@@ -6,7 +6,7 @@ sudo apt install git-all -y
 
 # Initialize and update git submodules
 git submodule init
-git submodule update
+git submodule update --remote
 
 # Setup bashrc
 IS_MY_BASHRC_SOURCED=$(grep -E 'source.*.my_bashrc' ~/.bashrc | wc -l)
