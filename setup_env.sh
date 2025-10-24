@@ -41,3 +41,7 @@ else
     echo "Creating symbolic link for ~/.xbindkeysrc"
     ln -s $PWD/keybinding/.xbindkeysrc ~/.xbindkeysrc
 fi
+
+# Restart xbindkeys to apply new configuration
+killall xbindkeys
+xbindkeys
