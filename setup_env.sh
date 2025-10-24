@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Install git for submodules
+sudo apt update
+sudo apt install git-all -y
+
+# Initialize and update git submodules
+git submodule init
+git submodule update
+
 # Setup bashrc
 IS_MY_BASHRC_SOURCED=$(grep -E 'source.*.my_bashrc' ~/.bashrc | wc -l)
 

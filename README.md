@@ -1,6 +1,14 @@
 # dotfiles
 
-I gather here my custom configuration for:
+This project gather configuration files for:
 - bashrc
-- ssh
 - git
+- keybindings
+- ssh
+- tmux
+
+## Setup
+
+```
+./setup_env.sh
+```
