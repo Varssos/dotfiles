@@ -1,5 +1,6 @@
 [user]
-	email = sebastianwach22@gmail.com
+	email = sebastianwach222@gmail.com
+	name = Varssos
 [credential]
 	helper = store
 [gitreview]
@@ -7,7 +8,7 @@
 [color]
 	ui = auto
 [core]
-	editor = vi
+	editor = nano
 
 [alias]
     s = status
