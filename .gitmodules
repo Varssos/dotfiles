@@ -4,3 +4,6 @@
 [submodule "tmux_config"]
 	path = tmux_config
 	url = https://github.com/Varssos/tmux_config.git
+[submodule "keybindings"]
+	path = keybindings
+	url = https://github.com/Varssos/keybindings.git

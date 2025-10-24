@@ -39,7 +39,7 @@ else
     ln -s $PWD/ssh/config ~/.ssh/config
 fi
 
-# Setup keybinding
+# Setup keybindings
 sudo apt update
 sudo apt-get install xbindkeys -y
 
@@ -47,7 +47,7 @@ if [ -f ~/.xbindkeysrc ]; then
     echo "File ~/.xbindkeysrc exist. Script will create a symbolic link only if it doesn't exist."
 else
     echo "Creating symbolic link for ~/.xbindkeysrc"
-    ln -s $PWD/keybinding/.xbindkeysrc ~/.xbindkeysrc
+    ln -s $PWD/keybindings/.xbindkeysrc ~/.xbindkeysrc
 fi
 
 # Restart xbindkeys to apply new configuration
