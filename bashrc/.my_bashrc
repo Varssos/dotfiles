@@ -1,6 +1,4 @@
 # ADD to PATH
-export PATH="/home/sw/.local/bin:$PATH"
-
 alias bashreload='source ~/.bashrc'
 alias echostatus='echo "EXIT STATUS: $?"'
 alias mkcd='function mkcdf(){ mkdir "$1"; cd "$1"; }; mkcdf'
