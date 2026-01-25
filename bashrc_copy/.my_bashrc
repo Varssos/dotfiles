@@ -1,0 +1,62 @@
+# ADD to PATH
+export PATH="/home/sw/.local/bin:$PATH"
+
+alias bashreload='source ~/.bashrc'
+alias echostatus='echo "EXIT STATUS: $?"'
+alias mkcd='function mkcdf(){ mkdir "$1"; cd "$1"; }; mkcdf'
+
+
+# -------CDs------------
+alias cdmyfiles='cd ~/Documents/my_files'
+alias cd1='cd ../'
+alias cd2='cd ../..'
+alias cd3='cd ../../..'
+alias cd4='cd ../../../..'
+alias cd5='cd ../../../../..'
+alias cd6='cd ../../../../../..'
+alias cd7='cd ../../../../../../..'
+alias cd8='cd ../../../../../../../..'
+
+
+# Custom
+alias mountofficedisk='sudo sshfs -o allow_other,IdentityFile=/home/sw/.ssh/office_host_pc sebastianwa@192.168.224.188:/home/sebastianwa/ /mnt/office_pc_home/'
+alias umountofficedisk='sudo umount /mnt/office_pc_home'
+alias mkcd='function mkcdf(){ mkdir "$1"; cd "$1"; }; mkcdf'
+alias duhere='du --all -h -d 1 | sort -h'
+alias copy_last_command='history -p '!!' | xclip -sel clip'
+alias pbcopy='tee >(xsel --input --clipboard)'
+alias pbcopy_silent='xsel --input --clipboard'
+alias pbpaste='xsel --output --clipboard'
+
+# Useful scripts
+alias fileToHexArray='hexdump -v -e "/1 \"0x%02X, \"" $1'
+
+
+## ------ESP32----------
+alias get_idf='. $HOME/Documents/my_files/esp32/esp-idf/export.sh'
+alias cdesp32='cd $HOME/Documents/my_files/esp32/'
+
+
+# Serial connections
+alias pico0='picocom -b 115200 /dev/ttyUSB0'
+alias pico1='picocom -b 115200 /dev/ttyUSB1'
+alias pico2='picocom -b 115200 /dev/ttyUSB2'
+alias pico3='picocom -b 115200 /dev/ttyUSB3'
+
+# USB bind/unbind, check usb tree with alias below or: `lsusb -tv` and in `dmesg` eg. usb 1-7.2.2
+alias getphysicalusbaddress='getphysicalusbaddress_fun() { udevadm info --query=path --name="$1" | awk -F/ "{print \$(NF-4)}"; }; getphysicalusbaddress_fun'
+
+
+# Graphic things
+alias check_graphic_session_type='echo $XDG_SESSION_TYPE'
+alias nomachine_restart_nxserver='sudo systemctl stop gdm && sudo /etc/NX/nxserver --restart'
+alias start_gnome_display_manager='sudo systemctl start gdm'
+
+# Network
+alias tailscale_turnon='sudo tailscale up'
+alias tailscale_turnoff='sudo tailscale down'
+alias tailscale_logout='sudo tailscale logout'
+alias tailscale_login='sudo tailscale login'
+
+# Ntfy
+alias ntfy='ntfy_fun(){ $* && curl -d "Cmd: $* was successful" 192.168.0.64/laptop || curl -d "Cmd: $* failed." 192.168.0.64/laptop; }; ntfy_fun'

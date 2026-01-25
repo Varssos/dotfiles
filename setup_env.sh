@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# Install git for submodules
-sudo apt update
-sudo apt install git-all -y
-
-# Initialize and update git submodules
-git submodule init
-git submodule update --remote
 
 # Setup bashrc
 IS_MY_BASHRC_SOURCED=$(grep -E 'source.*.my_bashrc' ~/.bashrc | wc -l)
@@ -25,33 +18,5 @@ else
     fi
 fi
 
-# Setup git
-if [ -f ~/.gitconfig ]; then
-    echo "File ~/.gitconfig exist. Script will create a symbolic link only if it doesn't exist."
-else
-    echo "Creating symbolic link for ~/.gitconfig"
-    ln -s $PWD/git/.gitconfig ~/.gitconfig
-fi
 
-# Setup ssh
-if [ -f ~/.ssh/config ]; then
-    echo "File ~/.ssh/config exist. Script will create a symbolic link only if it doesn't exist."
-else
-    echo "Creating symbolic link for ~/.ssh/config"
-    ln -s $PWD/ssh/config ~/.ssh/config
-fi
-
-# Setup keybindings
-sudo apt update
-sudo apt-get install xbindkeys -y
-
-if [ -f ~/.xbindkeysrc ]; then
-    echo "File ~/.xbindkeysrc exist. Script will create a symbolic link only if it doesn't exist."
-else
-    echo "Creating symbolic link for ~/.xbindkeysrc"
-    ln -s $PWD/keybindings/.xbindkeysrc ~/.xbindkeysrc
-fi
-
-# Restart xbindkeys to apply new configuration
-killall xbindkeys
-xbindkeys
+# What with tmux config?

@@ -1,4 +1,6 @@
 # dotfiles
+Dotfiles which can be installed on my laptop, home server and work laptop.
+Please don't place sensitive informations etc.
 
 This project gather configuration files for:
 - bashrc        (public submodule)
