@@ -92,6 +92,46 @@ function setup_tmux(){
     echo "Tmux configuration applied."
 }
 
+
+# ------Setup kitty------
+
+function setup_kitty(){
+    sudo apt install kitty -y
+
+    kitty +kitten themes --reload-in=all Catppuccin-Mocha
+
+    mkdir -p ~/.config/kitty
+    stow kitty
+
+    # Ensure the main kitty.conf includes a private conf file
+    KITTY_CONF="$HOME/.config/kitty/kitty.conf"
+    INCLUDE_LINE="include kitty-private.conf"
+
+    # ensure file exists so grep/sed won't fail
+    if [ ! -f "$KITTY_CONF" ]; then
+        touch "$KITTY_CONF"
+    fi
+
+    IS_INCLUDED=$(grep -E '^\s*include\s+kitty-private\.conf' "$KITTY_CONF" | wc -l)
+
+    if [ "$IS_INCLUDED" -lt 1 ]; then
+        IS_COMMENTED=$(grep -E '^\s*#\s*include\s+kitty-private\.conf' "$KITTY_CONF" | wc -l)
+
+        if [ "$IS_COMMENTED" -lt 1 ]; then
+            echo "Include line is not present in $KITTY_CONF. Appending at the bottom."
+            echo -e "\n$INCLUDE_LINE" >> "$KITTY_CONF"
+        else
+            echo "WARNING! Include line is commented in $KITTY_CONF. Uncommenting it..."
+            sed -i 's/^\s*#\s*include\s\+kitty-private\.conf$/include kitty-private.conf/' "$KITTY_CONF"
+        fi
+    else
+        echo "Include line already exists in $KITTY_CONF. No need to append."
+    fi
+
+    echo "Kitty configuration applied."
+}
+
 # Execute setup functions
 setup_bashrc
 setup_tmux
+setup_kitty

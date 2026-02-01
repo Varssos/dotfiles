@@ -1,0 +1,2 @@
+# TODO
+- Prepare zsh config
