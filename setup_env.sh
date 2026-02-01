@@ -32,7 +32,6 @@ function setup_bashrc(){
 
 
 # ------Setup tmux------
-
 function install_nerd_fonts(){
 # Based on https://firstan.org/en/software/tmux-linux-mint/
     TMP_MESLO_DIR="/tmp/Meslo"
@@ -48,6 +47,17 @@ function install_nerd_fonts(){
 
     sudo mv "$TMP_MESLO_DIR" /usr/share/fonts/opentype/Meslo
     fc-cache -f -v
+}
+
+function install_catppuccin_tmux_plugin(){
+    CATPUCCIN_DIR="$HOME/.config/tmux/plugins/catppuccin"
+    mkdir -p "$CATPUCCIN_DIR"
+    if [ ! -d "$CATPUCCIN_DIR/tmux/.git" ]; then
+        echo "Installing catppuccin/tmux plugin…"
+        git clone -b v2.1.3 https://github.com/catppuccin/tmux.git "$CATPUCCIN_DIR/tmux"
+    else
+        echo "catppuccin/tmux plugin already installed, skipping"
+    fi
 }
 function setup_tmux(){
     sudo apt install tmux git xclip -y # or xsel for tmux-yank
@@ -65,7 +75,11 @@ function setup_tmux(){
         echo "tpm already installed, skipping"
     fi
 
+    ## Install catppuccin/tmux plugin manually(due to issues with tpm)
+    # install_catppuccin_tmux_plugin
+
     ## Apply tmux configuration
+    mkdir -p ~/.config/tmux
     stow tmux
 
     ## Install tmux plugins
