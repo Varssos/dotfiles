@@ -5,6 +5,10 @@ sudo apt install stow -y
 
 # ------Setup bashrc------
 function setup_bashrc(){
+    # Remove existing bashrc stow to avoid conflicts
+    stow -D bashrc
+
+
     BASHRC="$HOME/.bashrc"
     SOURCE_LINE="source ~/.my_bashrc"
 
@@ -60,6 +64,9 @@ function install_catppuccin_tmux_plugin(){
     fi
 }
 function setup_tmux(){
+    # Remove existing tmux stow to avoid conflicts
+    stow -D tmux
+
     sudo apt install tmux git xclip -y # or xsel for tmux-yank
 
     ## Installl nerd fonts
@@ -96,6 +103,9 @@ function setup_tmux(){
 # ------Setup kitty------
 
 function setup_kitty(){
+    # Remove existing kitty stow to avoid conflicts
+    stow -D kitty
+
     sudo apt install kitty -y
 
     kitty +kitten themes --reload-in=all Catppuccin-Mocha
