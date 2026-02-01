@@ -101,7 +101,11 @@ function setup_tmux(){
 
 
 # ------Setup kitty------
-
+# If in your OS kitty version < 0.26 install from source and setup with:
+# https://sw.kovidgoyal.net/kitty/binary/
+# For Ubuntu:
+# Setup default terminal: https://linuxconfig.org/ubuntu-change-default-terminal-emulator
+# gsettings set org.gnome.desktop.default-applications.terminal exec '.local/bin/kitty'
 function setup_kitty(){
     # Remove existing kitty stow to avoid conflicts
     stow -D kitty
