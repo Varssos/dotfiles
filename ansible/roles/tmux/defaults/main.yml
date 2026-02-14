@@ -1,0 +1,12 @@
+---
+# Tmux role defaults
+tmux_packages:
+  - tmux
+  - xclip
+
+meslo_version: "v3.4.0"
+meslo_url: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ meslo_version }}/Meslo.zip"
+meslo_fonts_dir: "/usr/share/fonts/opentype/Meslo"
+
+tpm_repo: "https://github.com/tmux-plugins/tpm.git"
+tpm_dest: "~/.tmux/plugins/tpm"

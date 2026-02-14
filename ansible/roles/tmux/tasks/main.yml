@@ -1,0 +1,94 @@
+---
+- name: Remove existing tmux stow
+  command:
+    cmd: stow -D tmux
+    chdir: "{{ dotfiles_path }}"
+  ignore_errors: yes
+  become_user: "{{ ansible_user_id }}"
+
+- name: Install tmux and dependencies
+  apt:
+    name:
+      - tmux
+      - xclip
+    state: present
+
+- name: Create fonts directory
+  file:
+    path: /usr/share/fonts/opentype
+    state: directory
+
+- name: Download Meslo Nerd Font
+  get_url:
+    url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Meslo.zip"
+    dest: /tmp/Meslo.zip
+  register: meslo_download
+
+- name: Ensure /tmp/Meslo directory exists
+  file:
+    path: /tmp/Meslo
+    state: directory
+
+- name: Extract Meslo fonts
+  unarchive:
+    src: /tmp/Meslo.zip
+    dest: /tmp/Meslo
+    remote_src: yes
+  when: meslo_download.changed
+
+- name: Move fonts to system directory
+  command:
+    cmd: mv /tmp/Meslo /usr/share/fonts/opentype/Meslo
+  when: meslo_download.changed
+  ignore_errors: yes
+
+- name: Rebuild font cache
+  command: fc-cache -f -v
+
+- name: Create tmux plugins directory
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.tmux/plugins"
+    state: directory
+  become_user: "{{ ansible_user_id }}"
+
+- name: Install tmux plugin manager (tpm)
+  git:
+    repo: https://github.com/tmux-plugins/tpm.git
+    dest: "{{ lookup('env', 'HOME') }}/.tmux/plugins/tpm"
+  become_user: "{{ ansible_user_id }}"
+  register: tpm_install
+
+- name: Create ~/.config/tmux directory
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/tmux"
+    state: directory
+  become_user: "{{ ansible_user_id }}"
+
+- name: Apply tmux stow
+  command:
+    cmd: stow tmux
+    chdir: "{{ dotfiles_path }}"
+  become_user: "{{ ansible_user_id }}"
+
+- name: Source tmux plugins
+  shell: "{{ lookup('env', 'HOME') }}/.tmux/plugins/tpm/scripts/source_plugins.sh"
+  become_user: "{{ ansible_user_id }}"
+  environment:
+    TMUX_PLUGIN_MANAGER_PATH: "{{ lookup('env', 'HOME') }}/.tmux/plugins"
+  ignore_errors: yes
+
+- name: Install tmux plugins
+  shell: "{{ lookup('env', 'HOME') }}/.tmux/plugins/tpm/scripts/install_plugins.sh"
+  become_user: "{{ ansible_user_id }}"
+  environment:
+    TMUX_PLUGIN_MANAGER_PATH: "{{ lookup('env', 'HOME') }}/.tmux/plugins"
+  ignore_errors: yes
+
+- name: Source tmux configuration
+  shell: 'tmux source "{{ lookup(''env'', ''HOME'') }}/.config/tmux/tmux.conf" 2>/dev/null || true'
+  become_user: "{{ ansible_user_id }}"
+  ignore_errors: yes
+
+- name: Tmux configuration complete
+  debug:
+    msg: "Tmux configuration applied."

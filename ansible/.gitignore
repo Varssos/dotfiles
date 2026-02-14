@@ -1,0 +1,4 @@
+# Ansible Playbook Runs
+.ansible/
+__pycache__/
+*.retry
