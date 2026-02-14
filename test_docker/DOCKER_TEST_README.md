@@ -97,3 +97,6 @@ docker rmi ubuntu2404-test
 - `sudo` bez hasła dla user `sw`
 
 
+
+## SSH to docker
+ssh sw@localhost -p 2222

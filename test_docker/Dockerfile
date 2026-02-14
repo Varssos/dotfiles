@@ -48,4 +48,5 @@ EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
 
 
-RUN git clone https://github.com/Varssos/dotfiles.git /home/sw/dotfiles
+RUN git clone https://github.com/Varssos/dotfiles.git /home/sw/dotfiles && \
+    chown -R sw:sw /home/sw/dotfiles
