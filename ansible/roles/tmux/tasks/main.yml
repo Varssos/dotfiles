@@ -13,6 +13,8 @@
       - xclip
     state: present
 
+
+# Font
 - name: Create fonts directory
   file:
     path: /usr/share/fonts/opentype
@@ -42,8 +44,15 @@
   when: meslo_download.changed
   ignore_errors: yes
 
+- name: Install fontconfig if needed
+  apt:
+    name: fontconfig
+    state: present
+
 - name: Rebuild font cache
   command: fc-cache -f -v
+
+
 
 - name: Create tmux plugins directory
   file:

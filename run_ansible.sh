@@ -15,5 +15,10 @@ fi
 
 # Run the playbook
 cd "$ANSIBLE_DIR"
-ansible-playbook playbook.yml -i inventory/hosts.ini -K
 
+# If first argument is --no-password:
+if [[ "$1" == "--no-password" ]]; then
+    ansible-playbook playbook.yml -i inventory/hosts.ini -e 'ansible_become_password=""'
+else
+    ansible-playbook playbook.yml -i inventory/hosts.ini -K
+fi
