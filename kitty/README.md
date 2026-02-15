@@ -7,7 +7,7 @@ Please update `dotfiles_ansible` in case of any changes!
 ```
 sudo apt update && sudo apt install stow kitty -y
 kitty --version
-# Minimal version supported: 0.29
+# Minimal version supported: 0.26
 ```
 
 2. Remove existing kitty stow
@@ -31,3 +31,10 @@ stow kitty
 ```
 include kitty-private.conf
 ```
+
+## Known issues
+If in your OS kitty version < 0.26 install from source and setup with:
+https://sw.kovidgoyal.net/kitty/binary/
+For Ubuntu:
+Setup default terminal: https://linuxconfig.org/ubuntu-change-default-terminal-emulator
+gsettings set org.gnome.desktop.default-applications.terminal exec '.local/bin/kitty'
