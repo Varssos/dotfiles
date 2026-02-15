@@ -1,5 +1,0 @@
----
-# Kitty role defaults
-kitty_theme: "Catppuccin-Mocha"
-kitty_config_dir: "~/.config/kitty"
-kitty_private_conf: "kitty-private.conf"

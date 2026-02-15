@@ -1,3 +1,0 @@
----
-# Bashrc role defaults
-# No defaults needed for bashrc - uses stow for symlink management

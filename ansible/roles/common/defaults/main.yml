@@ -1,7 +1,0 @@
----
-# Common role defaults
-common_packages:
-  - stow
-  - git
-  - wget
-  - unzip

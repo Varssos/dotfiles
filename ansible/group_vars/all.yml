@@ -1,3 +1,0 @@
----
-# Default dotfiles path - can be overridden when running the playbook
-dotfiles_path: "{{ playbook_dir }}/.."
