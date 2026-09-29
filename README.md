@@ -8,6 +8,8 @@ Currently keeping configs for:
 - tmux
 - kitty
 
+Installation, manual setup instructions and defaults for tmux/kitty live in their own ansible-role-tmux / ansible-role-kitty repos (`roles/tmux` / `roles/kitty` in `ansible_setup_my_host`); this repo only holds the stowed config content.
+
 ## Setup with Ansible (Recommended)
 `dotfiles_ansible` README.md
 
