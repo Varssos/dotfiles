@@ -32,6 +32,25 @@ stow kitty
 include kitty-private.conf
 ```
 
+6. Setup kitty as default terminal (Ubuntu)
+```
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
+"['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Kitty Terminal'
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'kitty'
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Control><Alt>t'
+```
+
+Expect:
+Settings->Keyboard->View and Customize Shortcuts->Custom Shortcuts -> Add Shortcut
+Name: kitty terminal
+Command: kitty
+Shortcut: ctrl + alt + t
+
+
 ## Known issues
 If in your OS kitty version < 0.26 install from source and setup with:
 https://sw.kovidgoyal.net/kitty/binary/

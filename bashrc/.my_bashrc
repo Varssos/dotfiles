@@ -3,6 +3,11 @@ alias bashreload='source ~/.bashrc'
 alias echostatus='echo "EXIT STATUS: $?"'
 alias mkcd='function mkcdf(){ mkdir "$1"; cd "$1"; }; mkcdf'
 
+## Bash
+### Maximum number of commands kept in memory
+HISTSIZE=1000000
+### Maximum number of commands saved to the history file
+HISTFILESIZE=1000000
 
 # -------CDs------------
 alias cdmyfiles='cd ~/Documents/my_files'
